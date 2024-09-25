@@ -11,10 +11,10 @@ function App() {
     <ChatProvider>
       <Router>
         <Routes>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/chat" component={Chat} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </Router>
     </ChatProvider>
