@@ -57,7 +57,7 @@ The Mental Health Support App is a web-based application designed to provide men
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/mental-health-support-app.git
+   git clone https://github.com/Giathi-Daniel/mental-health-support-app.git
    cd mental-health-support-app
    ```
 
