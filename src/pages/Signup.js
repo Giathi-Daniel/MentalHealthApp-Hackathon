@@ -28,7 +28,7 @@ const Signup = () => {
             />
           </div>
           <button className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition">
-            Login
+            Sign up
           </button>
         </form>
 
@@ -38,7 +38,7 @@ const Signup = () => {
           </button>
         </div>
         <div className="mt-4 text-center">
-          <a href="/signup" className="text-indigo-500 hover:underline">
+          <a href="/login" className="text-indigo-500 hover:underline">
             Already have an account? Log in
           </a>
         </div>
