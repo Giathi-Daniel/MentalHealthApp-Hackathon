@@ -33,7 +33,7 @@ const CommunityForum = () => {
     <>
       <Header />
       <div className="h-screen flex bg-gray-100">
-        <div className="w-1/4 bg-indigo-600 text-white p-4 hidden md:flex flex-col">
+        <div className="w-1/4 bg-indigo-600 text-white p-4 hidden md:flex flex-col mt-[3.7rem]">
           <h2 className="text-xl font-bold mb-6">Community Forum</h2>
           <div className="mb-6">
             <h3 className="font-semibold text-gray-200">Topics</h3>

@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-indigo-600 text-white p-4 shadow-md">
+    <header className="bg-indigo-600 text-white p-4 shadow-md fixed w-full z-50">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="App Logo" className="h-8 w-8 mr-2" />
@@ -18,7 +18,7 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex space-x-8">
-          <Link to="/" cnlassName="hover:text-indigo-300">Home</Link>
+          <Link to="/" className="hover:text-indigo-300">Home</Link>
           <Link to="/counselors" className="hover:text-indigo-300">Counselors</Link>
           <Link to="/forum" className="hover:text-indigo-300">Community Forum</Link>
           <Link to="/resources" className="hover:text-indigo-300">Resources</Link>
@@ -30,14 +30,13 @@ const Header = () => {
         </div>
 
         <div className="md:hidden flex items-center">
-        <button onClick={toggleMenu} className="focus:outline-none">
+          <button onClick={toggleMenu} className="focus:outline-none">
             {isOpen ? (
-                <XMarkIcon className="h-6 w-6 text-white" />
+              <XMarkIcon className="h-6 w-6 text-white" />
             ) : (
-                <Bars3Icon className="h-6 w-6 text-white" />
+              <Bars3Icon className="h-6 w-6 text-white" />
             )}
-        </button>
-
+          </button>
         </div>
       </div>
 
