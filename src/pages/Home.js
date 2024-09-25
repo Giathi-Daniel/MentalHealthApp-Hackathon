@@ -6,9 +6,9 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header />
-      <header className="bg-indigo-600 text-white p-4 text-center">
+      {/* <header className="bg-indigo-600 text-white p-4 text-center">
         <h1 className="text-3xl font-bold">Mental Health Support App</h1>
-      </header>
+      </header> */}
 
       <main className="flex-grow container mx-auto px-4 py-8">
         <section className="text-center mb-12">

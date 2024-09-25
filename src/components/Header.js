@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MenuIcon, XIcon } from '@heroicons/react/outline'; // Import icons from Heroicons
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +13,7 @@ const Header = () => {
     <header className="bg-indigo-600 text-white p-4 shadow-md">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <img src="/logo.png" alt="App Logo" className="h-8 w-8 mr-2" />
+          <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="App Logo" className="h-8 w-8 mr-2" />
           <span className="text-xl font-bold">Mental Health Support</span>
         </div>
 
@@ -30,17 +30,17 @@ const Header = () => {
         </div>
 
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="focus:outline-none">
+        <button onClick={toggleMenu} className="focus:outline-none">
             {isOpen ? (
-              <XIcon className="h-6 w-6 text-white" />
+                <XMarkIcon className="h-6 w-6 text-white" />
             ) : (
-              <MenuIcon className="h-6 w-6 text-white" />
+                <Bars3Icon className="h-6 w-6 text-white" />
             )}
-          </button>
+        </button>
+
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden">
           <nav className="flex flex-col items-center bg-indigo-600 space-y-4 py-4">
