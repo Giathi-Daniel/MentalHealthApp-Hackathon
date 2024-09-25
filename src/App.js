@@ -8,6 +8,7 @@ import Chat from './pages/Chat';
 import ForgotPassword from './pages/ForgotPassword';
 import Counselors from './pages/counselors';
 import CommunityForum from './pages/CommunityForum';
+import Resources from './pages/Resources';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/counselors" element={<Counselors />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="/forum" element={<CommunityForum />} />
         </Routes>
       </Router>
