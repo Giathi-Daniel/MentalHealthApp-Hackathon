@@ -6,9 +6,6 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header />
-      {/* <header className="bg-indigo-600 text-white p-4 text-center">
-        <h1 className="text-3xl font-bold">Mental Health Support App</h1>
-      </header> */}
 
       <main className="flex-grow container mx-auto px-4 py-8">
         <section className="text-center mb-12">
@@ -56,22 +53,22 @@ const Home = () => {
 
         <section className="bg-white p-8 rounded-lg shadow-md mb-12">
           <h2 className="text-2xl font-semibold text-center mb-6">How It Works</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
               <div className="mb-4">
                 <span className="text-indigo-600 text-4xl font-bold">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Sign Up</h3>
               <p className="text-gray-600">Create an account to access our support resources and services.</p>
             </div>
-            <div className="text-center">
+            <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
               <div className="mb-4">
                 <span className="text-indigo-600 text-4xl font-bold">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Connect</h3>
               <p className="text-gray-600">Engage with counselors and join our community for ongoing support.</p>
             </div>
-            <div className="text-center">
+            <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
               <div className="mb-4">
                 <span className="text-indigo-600 text-4xl font-bold">3</span>
               </div>
@@ -80,6 +77,7 @@ const Home = () => {
             </div>
           </div>
         </section>
+
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-center mb-6">What People Are Saying</h2>
