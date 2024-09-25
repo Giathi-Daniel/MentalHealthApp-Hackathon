@@ -20,6 +20,11 @@ const Login = () => {
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
+          <div className="flex justify-between mb-6">
+            <a href="/forgot-password" className="text-indigo-500 hover:underline">
+              Forgot Password?
+            </a>
+          </div>
           <button className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition">
             Login
           </button>
