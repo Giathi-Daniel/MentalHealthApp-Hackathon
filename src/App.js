@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Chat from './pages/Chat';
 import ForgotPassword from './pages/ForgotPassword';
-import Counselors from './components/counselors';
+import Counselors from './pages/counselors';
 import CommunityForum from './pages/CommunityForum';
 
 function App() {
