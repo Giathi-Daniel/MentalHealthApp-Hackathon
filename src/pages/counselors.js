@@ -32,7 +32,7 @@ const Counselors = () => {
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
-        <section className="bg-indigo-600 text-white py-16 px-4 text-center">
+        <section className="bg-indigo-600 text-white px-4 text-center py-[7rem]">
           <motion.h1 
             className="text-4xl font-bold mb-4"
             initial={{ opacity: 0 }}
