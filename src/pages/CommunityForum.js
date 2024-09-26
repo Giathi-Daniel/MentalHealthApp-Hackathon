@@ -28,6 +28,30 @@ const CommunityForum = () => {
 
   const topics = ['general', 'mental-health', 'coping', 'therapy'];
 
+ const handleSendMessage = async(e) => {
+    try{
+        e.preventDefault();
+        let url=`https://gemmie.onrender.com/api/prompt`
+        const response=await fetch(url,{
+            method:"POST",
+            body:JSON.stringify({
+                prompt:message
+            }),
+            headers:{
+                "content-type":"application/json"
+            }
+        })
+        const parseRes=await response.json()
+        if(parseRes.error){
+            console.log(parseRes.error,message)
+        }else{
+            console.log(parseRes)
+            setMessages([...messages, { text: (parseRes.text), sender: 'You', prompt:parseRes.prompt, time: '10:10 AM', mood: mood?.label }]);
+            setMessage('');
+            setMood(null);
+        }
+    }catch(error){
+        alert(error.message)
   const topicStyles = {
     general: 'bg-white',
     'mental-health': 'bg-blue-50',
@@ -85,6 +109,27 @@ const CommunityForum = () => {
           </div>
         </div>
 
+        <div className="flex-1 flex flex-col justify-between">
+          <div className="flex-grow p-6 bg-white shadow-md overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4">#{selectedTopic}</h2>
+            <DailyWellnessTips />
+
+            <div>
+              {messages.map((msg, index) => (
+                <div key={index} className="mb-4">
+                    <div className="flex items-center">
+                        <p className="flex flex-grow gap-2">
+                            <span className="font-bold text-indigo-600">{msg.sender}</span> <span className="text-gray-500 font-semibold capitalize">{msg.prompt}</span>
+                        </p>
+                        <p className="ml-auto">
+                            <span className="text-sm text-gray-500 ml-2">{msg.time}</span>
+                            <span className={`ml-2 ${msg.mood ? 'text-yellow-500' : 'text-gray-500'}`}>
+                                {msg.mood ? `(${msg.mood})` : ''}
+                            </span>
+                        </p>
+                    </div>
+                    <p className="text-gray-800">{msg.text}</p>
+                </div>
         <div className={`flex-1 flex flex-col justify-between mt-[3.7rem] ${topicStyles[selectedTopic]}`}>
           <div className="flex-grow p-6 shadow-md overflow-y-auto">
             <CSSTransition key={selectedTopic} timeout={300} classNames="fade">
