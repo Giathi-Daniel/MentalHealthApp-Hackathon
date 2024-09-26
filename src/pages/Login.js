@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 
 const Login = () => {
   return (
@@ -21,24 +22,30 @@ const Login = () => {
             />
           </div>
           <div className="flex justify-between mb-6">
-            <a href="/forgot-password" className="text-indigo-500 hover:underline">
+            <Link 
+              to="/forgot-password"
+              className="text-indigo-500 hover:underline transition duration-300 ease-in-out"
+            >
               Forgot Password?
-            </a>
+            </Link>
           </div>
-          <button className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition">
+          <button className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300 ease-in-out">
             Login
           </button>
         </form>
 
         <div className="mt-6">
-          <button className="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600 transition">
+          <button className="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600 transition duration-300 ease-in-out">
             Continue with Google
           </button>
         </div>
         <div className="mt-4 text-center">
-          <a href="/signup" className="text-indigo-500 hover:underline">
-            Don't have an account? Sign up
-          </a>
+          <Link 
+            to="/signup"
+            className="text-indigo-500 hover:underline transition duration-300 ease-in-out"
+          >
+             Don't have an account? Sign up
+          </Link>
         </div>
       </div>
     </div>
