@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 import { motion } from 'framer-motion';
 import Header from "../components/Header";
 
@@ -38,7 +39,6 @@ const Counselors = () => {
     <>
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-200">
-        {/* Hero Section */}
         <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center py-24">
           <motion.h1 
             className="text-5xl font-extrabold tracking-tight mb-4"
@@ -56,15 +56,16 @@ const Counselors = () => {
           >
             Connecting you with experts to support your mental wellness journey.
           </motion.p>
-          <motion.button 
-            className="bg-white text-indigo-600 px-8 py-4 rounded-full hover:bg-gray-100 transition"
-            whileHover={{ scale: 1.1 }}
-          >
-            Explore More
-          </motion.button>
+          <Link to="/about">
+            <motion.button 
+              className="bg-white text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-100 transition duration-150 ease-in-out"
+              whileHover={{ scale: 1.1 }}
+            >
+              Explore More
+            </motion.button>
+          </Link>
         </section>
 
-        {/* Available Counselors Section */}
         <section className="container mx-auto px-6 py-16">
           <div className="flex justify-between items-center mb-12">
             <div>
@@ -89,7 +90,6 @@ const Counselors = () => {
           </div>
         </section>
 
-        {/* Testimonials Section */}
         <section className="bg-gray-100 py-20">
           <h2 className="text-center text-4xl font-bold mb-8 text-gray-800">What Clients Are Saying</h2>
           <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -109,7 +109,6 @@ const Counselors = () => {
           </div>
         </section>
 
-        {/* Call to Action Section */}
         <section className="bg-indigo-600 text-white py-16 text-center">
           <motion.h2 
             className="text-3xl font-semibold mb-6"
