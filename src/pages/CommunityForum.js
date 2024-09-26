@@ -3,9 +3,7 @@ import { FaHashtag } from 'react-icons/fa';
 import { FiSend } from 'react-icons/fi';
 import Header from '../components/Header';
 import MoodTracker from '../components/MoodTracker';
-import SupportiveReactions from '../components/SupportiveReactions';
 import DailyWellnessTips from '../components/DailyWellnessTips';
-import AvatarUpload from '../components/AvatarUpload';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const CommunityForum = () => {
@@ -20,81 +18,71 @@ const CommunityForum = () => {
     therapy: [],
   });
 
-  const [avatars, setAvatars] = useState({
+  const avatars = {
     'User 1': 'https://cdn.pixabay.com/photo/2021/03/03/08/56/woman-6064819_1280.jpg',
     'User 2': 'https://cdn.pixabay.com/photo/2015/01/12/10/44/woman-597173_640.jpg',
     'User 3': 'https://cdn.pixabay.com/photo/2023/06/23/11/23/ai-generated-8083323_640.jpg',
-  });
+    You: 'https://cdn.pixabay.com/photo/2015/01/12/10/44/woman-597173_640.jpg',
+    API: `${process.env.PUBLIC_URL}/api.png`,
+    Admin: `${process.env.PUBLIC_URL}/admin.png` // Add the admin avatar path here
+  };
 
   const topics = ['general', 'mental-health', 'coping', 'therapy'];
 
   const handleSendMessage = async (e) => {
     try {
       e.preventDefault();
-      let url = `https://gemmie.onrender.com/api/prompt`;
+      const url = `https://gemmie.onrender.com/api/prompt`;
+
+      const userMessage = {
+        text: message,
+        sender: 'You',
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        mood: mood?.label,
+      };
+
+      setMessages((prevMessages) => ({
+        ...prevMessages,
+        [selectedTopic]: [...prevMessages[selectedTopic], userMessage],
+      }));
+
+      setMessage('');
+
       const response = await fetch(url, {
         method: 'POST',
-        body: JSON.stringify({
-          prompt: message,
-        }),
+        body: JSON.stringify({ prompt: message }),
         headers: {
           'content-type': 'application/json',
         },
       });
+
       const parseRes = await response.json();
       if (parseRes.error) {
         console.log(parseRes.error, message);
       } else {
-        console.log(parseRes);
-        setMessages({
-          ...messages,
-          [selectedTopic]: [
-            ...messages[selectedTopic],
-            {
-              text: parseRes.text,
-              sender: 'You',
-              time: '10:10 AM',
-              mood: mood?.label,
-            },
-          ],
-        });
-        setMessage('');
-        setMood(null);
+        const apiMessage = {
+          text: parseRes.text.replace(/<[^>]+>/g, ''),
+          sender: 'API',
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          mood: null,
+        };
+
+        setMessages((prevMessages) => ({
+          ...prevMessages,
+          [selectedTopic]: [...prevMessages[selectedTopic], apiMessage],
+        }));
       }
+
+      setMood(null);
     } catch (error) {
       alert(error.message);
     }
-  };
-
-  const handleReaction = (reaction) => {
-    setMessages({
-      ...messages,
-      [selectedTopic]: [
-        ...messages[selectedTopic],
-        { text: reaction, sender: 'Supporter', time: '10:11 AM', mood: null },
-      ],
-    });
-  };
-
-  const handleAvatarChange = (username, newAvatar) => {
-    setAvatars({
-      ...avatars,
-      [username]: newAvatar,
-    });
-  };
-
-  const topicStyles = {
-    general: 'bg-white',
-    'mental-health': 'bg-blue-50',
-    coping: 'bg-yellow-50',
-    therapy: 'bg-green-50',
   };
 
   return (
     <>
       <Header />
       <div className="h-screen flex bg-gray-100">
-        {/* Sidebar with Topics */}
         <div className="w-1/4 bg-[#008080] text-white p-4 hidden md:flex flex-col mt-[3.9rem]">
           <h2 className="text-xl font-bold mb-6 text-[#E0E0E0]">Community Forum</h2>
           <div className="mb-6">
@@ -115,8 +103,7 @@ const CommunityForum = () => {
           </div>
         </div>
 
-        {/* Chat Area */}
-        <div className={`flex-1 flex flex-col justify-between mt-[3.7rem] ${topicStyles[selectedTopic]}`}>
+        <div className={`flex-1 flex flex-col justify-between mt-[3.7rem]`}>
           <div className="flex-grow p-6 shadow-md overflow-y-auto">
             <CSSTransition key={selectedTopic} timeout={300} classNames="fade">
               <h2 className="text-xl font-bold mb-4 transition-opacity">#{selectedTopic}</h2>
@@ -127,22 +114,21 @@ const CommunityForum = () => {
             <TransitionGroup className="message-list">
               {messages[selectedTopic].map((msg, index) => (
                 <CSSTransition key={index} timeout={300} classNames="fade">
-                  <div className="mb-4">
-                    <span className="font-bold text-indigo-600">{msg.sender}</span>
-                    <span className="text-sm text-gray-500 ml-2">{msg.time}</span>
-                    <span className={`ml-2 ${msg.mood ? 'text-yellow-500' : 'text-gray-500'}`}>
-                      {msg.mood ? `(${msg.mood})` : ''}
-                    </span>
-                    <p className="text-gray-800">{msg.text}</p>
+                  <div className={`mb-4 flex items-start ${msg.sender === 'You' ? 'justify-end' : 'justify-start'}`}>
+                    <div className={`${msg.sender === 'You' ? 'bg-green-100' : 'bg-gray-200'} p-4 rounded-lg`}>
+                      <div className="flex items-center mb-1">
+                        <img src={avatars[msg.sender] || avatars['Admin']} alt={`${msg.sender} avatar`} className="w-8 h-8 rounded-full mr-2" />
+                        <span className="font-bold text-indigo-600">{msg.sender}</span>
+                        <span className="text-sm text-gray-500 ml-2">{msg.time}</span>
+                      </div>
+                      <div>{msg.sender === 'API' ? msg.text : msg.text}</div>
+                    </div>
                   </div>
                 </CSSTransition>
               ))}
             </TransitionGroup>
-
-            {selectedTopic === 'mental-health' && <SupportiveReactions onReact={handleReaction} />}
           </div>
 
-          {/* Message Input Area */}
           <div className="p-4 bg-gray-200">
             {selectedTopic === 'mental-health' && <MoodTracker onMoodSelect={setMood} />}
             <form className="flex items-center" onSubmit={handleSendMessage}>
@@ -163,51 +149,28 @@ const CommunityForum = () => {
           </div>
         </div>
 
-        {/* Active Users Sidebar */}
         <div className="w-1/4 bg-indigo-50 p-4 hidden md:flex flex-col mt-[3.9rem]">
           <h3 className="text-lg font-bold mb-4">Active Users</h3>
           <ul>
-            <li className="py-2 flex items-center">
-              <AvatarUpload onAvatarChange={(newAvatar) => handleAvatarChange('User 1', newAvatar)} />
-              <div>
-                <span className="font-semibold">User 1</span>
-                <p className="text-sm text-gray-600">Feeling Happy</p>
-              </div>
+            <li className="mb-2 flex items-center">
+              <img src={avatars['User 1']} alt="User 1" className="w-8 h-8 rounded-full mr-2" />
+              <span>User 1</span>
             </li>
-            <li className="py-2 flex items-center">
-              <AvatarUpload onAvatarChange={(newAvatar) => handleAvatarChange('User 2', newAvatar)} />
-              <div>
-                <span className="font-semibold">User 2</span>
-                <p className="text-sm text-gray-600">Feeling Stressed</p>
-              </div>
+            <li className="mb-2 flex items-center">
+              <img src={avatars['User 2']} alt="User 2" className="w-8 h-8 rounded-full mr-2" />
+              <span>User 2</span>
             </li>
-            <li className="py-2 flex items-center">
-              <AvatarUpload onAvatarChange={(newAvatar) => handleAvatarChange('User 3', newAvatar)} />
-              <div>
-                <span className="font-semibold">User 3</span>
-                <p className="text-sm text-gray-600">Feeling Motivated</p>
-              </div>
+            <li className="mb-2 flex items-center">
+              <img src={avatars['User 3']} alt="User 3" className="w-8 h-8 rounded-full mr-2" />
+              <span>User 3</span>
+            </li>
+            <li className="mb-2 flex items-center">
+              <img src={avatars['Admin']} alt="Admin" className="w-8 h-8 rounded-full mr-2" />
+              <span>Admin</span>
             </li>
           </ul>
         </div>
       </div>
-
-      <style jsx>{`
-        .fade-enter {
-          opacity: 0;
-        }
-        .fade-enter-active {
-          opacity: 1;
-          transition: opacity 300ms;
-        }
-        .fade-exit {
-          opacity: 1;
-        }
-        .fade-exit-active {
-          opacity: 0;
-          transition: opacity 300ms;
-        }
-      `}</style>
     </>
   );
 };
