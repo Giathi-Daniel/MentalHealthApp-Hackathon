@@ -22,7 +22,7 @@ const ContactUs = () => {
         <div className="flex justify-center mt-[-4rem] mb-8">
           <div className="bg-white shadow-lg rounded-lg flex flex-col md:flex-row p-6 w-11/12 md:w-4/5 lg:w-[87%] transition-transform duration-300 transform hover:scale-105">
             <div className="w-full md:w-1/2 pr-4">
-              <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Ask Us Anything</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#00C853]">Ask Us Anything</h2>
               <form className="space-y-4">
                 <input
                   type="text"
@@ -49,7 +49,7 @@ const ContactUs = () => {
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-md transition duration-300"
+                  className="w-full bg-[#008080] hover:bg-[#2F4F4F] text-[#F0F0F0] font-semibold py-3 rounded-md transition duration-300"
                 >
                   Send Message
                 </button>
@@ -59,7 +59,7 @@ const ContactUs = () => {
             <div className="border-l border-gray-300 mx-4 hidden md:block"></div>
 
             <div className="flex flex-col w-full md:w-1/2 pl-4 py-4">
-                <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Contact Info</h2>
+                <h2 className="text-2xl font-semibold mb-4 text-[#00C853]">Contact Info</h2>
                 <p className="text-gray-700 py-4">
                     <strong>MindCare HQ:</strong><br />
                     MindCare Inc,<br />

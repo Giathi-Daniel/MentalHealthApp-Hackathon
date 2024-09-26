@@ -13,7 +13,6 @@ const CommunityForum = () => {
   const [message, setMessage] = useState('');
   const [mood, setMood] = useState(null);
 
-  // Separate messages for each topic
   const [messages, setMessages] = useState({
     general: [{ text: 'Welcome to the General Discussion!', sender: 'Admin', time: '10:00 AM', mood: 'Happy' }],
     'mental-health': [],
@@ -39,7 +38,6 @@ const CommunityForum = () => {
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (message.trim()) {
-      // Update messages for the selected topic
       setMessages({
         ...messages,
         [selectedTopic]: [...messages[selectedTopic], { text: message, sender: 'You', time: '10:10 AM', mood: mood?.label }]
@@ -67,8 +65,8 @@ const CommunityForum = () => {
     <>
       <Header />
       <div className="h-screen flex bg-gray-100">
-        <div className="w-1/4 bg-indigo-600 text-white p-4 hidden md:flex flex-col mt-[3.9rem]">
-          <h2 className="text-xl font-bold mb-6">Community Forum</h2>
+        <div className="w-1/4 bg-[#008080] text-white p-4 hidden md:flex flex-col mt-[3.9rem]">
+          <h2 className="text-xl font-bold mb-6 text-[#E0E0E0]">Community Forum</h2>
           <div className="mb-6">
             <h3 className="font-semibold text-gray-200">Topics</h3>
             <ul className="mt-4">
@@ -125,7 +123,7 @@ const CommunityForum = () => {
               />
               <button
                 type="submit"
-                className="ml-4 bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 transition"
+                className="ml-4 bg-[#008080] text-[#f0f0f0] p-3 rounded-lg hover:bg-[#38b570] transition"
               >
                 <FiSend />
               </button>

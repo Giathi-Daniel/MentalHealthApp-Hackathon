@@ -19,7 +19,7 @@ const CounselorCard = ({ counselor }) => {
         <div className="flex justify-center mt-4">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+            className="bg-indigo-600 text-[#F0F0F0] px-4 py-2 rounded-lg hover:bg-[#273125] transition duration-300 ease-in"
           >
             Book Session
           </button>

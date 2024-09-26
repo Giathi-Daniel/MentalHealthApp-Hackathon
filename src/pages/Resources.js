@@ -55,7 +55,7 @@ const Resources = () => {
         <main className="container mx-auto px-4 py-8 flex-grow">
           <section className="my-16">
             <h2 className="text-3xl font-semibold mb-8 text-center">Featured Articles</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 select-none">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-2 md:px-8 select-none">
               {resourcesData.map((resource, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                   <img
@@ -72,8 +72,9 @@ const Resources = () => {
                   </p>
                   <button
                     onClick={() => toggleExpand(index)}
-                    className="inline-block mt-4 text-indigo-600 hover:underline focus:outline-none"
+                    className="inline-block mt-4 text-[#F0F0F0] hover:underline focus:outline-none"
                   >
+                    
                     {expandedIndex === index ? 'Show Less' : 'Read More'}
                   </button>
                 </div>

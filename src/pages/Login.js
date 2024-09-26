@@ -29,7 +29,7 @@ const Login = () => {
               Forgot Password?
             </Link>
           </div>
-          <button className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300 ease-in-out">
+          <button className="w-full bg-[#008080] text-[#F0F0F0] py-2 rounded-lg font-semibold hover:bg-[#98FF98] transition duration-300 ease-in-out">
             Login
           </button>
         </form>

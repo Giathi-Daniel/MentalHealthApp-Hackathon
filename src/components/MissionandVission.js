@@ -21,7 +21,7 @@ const MissionAndVision = () => {
   };
 
   return (
-    <section className="py-16 container mx-auto px-6">
+    <section className="py-16 container mx-auto px-3 md:px-6">
       <h2 className="text-3xl font-bold mb-6 text-center">Our Mission & Vision</h2>
       <div className="flex flex-wrap justify-center">
         <div className="w-full sm:w-1/2 p-4">

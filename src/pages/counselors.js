@@ -27,7 +27,7 @@ const CounselorCard = ({ counselor }) => {
       <p className="text-center text-indigo-600 text-lg">{counselor.specialty}</p>
       <p className="text-center text-gray-500">{counselor.experience} of experience</p>
       <div className="flex justify-center mt-6">
-        <button className="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition duration-300">
+        <button className="bg-[#008080] text-[#F0F0F0] px-5 py-2 rounded-full hover:bg-[#98FF98] transition duration-300">
           Book Session
         </button>
       </div>
@@ -40,7 +40,7 @@ const Counselors = () => {
     <>
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-200">
-        <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center py-24">
+        <section className="bg-gradient-to-r from-[#00ADEF] to-[#00C853] text-white text-center py-24">
           <motion.h1 
             className="text-5xl font-extrabold tracking-tight mb-4"
             initial={{ opacity: 0 }}
@@ -59,7 +59,7 @@ const Counselors = () => {
           </motion.p>
           <Link to="/about">
             <motion.button 
-              className="bg-white text-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-100 transition duration-150 ease-in-out"
+              className="bg-[#2F4F4F] text-[#F0F0F0] px-4 py-2 rounded-lg hover:bg-[#008080] transition duration-150 ease-in-out"
               whileHover={{ scale: 1.1 }}
             >
               Explore More
@@ -91,7 +91,7 @@ const Counselors = () => {
           </div>
         </section>
 
-        <section className="bg-gray-100 py-20">
+        <section className="bg-gray-100 py-20 px-4">
           <h2 className="text-center text-4xl font-bold mb-8 text-gray-800">What Clients Are Saying</h2>
           <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {["My experience with counseling changed my life.", 
@@ -123,7 +123,7 @@ const Counselors = () => {
           <Link to="/contact">
             <motion.button 
               aria-label="Get support now"
-              className="bg-white text-indigo-600 px-8 py-4 rounded-full hover:bg-gray-200 transition"
+              className="bg-[#008080] text-[#F0F0F0] px-8 py-4 rounded-full hover:bg-[#273125] transition duration-150 ease-in"
               whileHover={{ scale: 1.1 }}
             >
               Get Support Now

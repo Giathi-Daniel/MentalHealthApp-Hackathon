@@ -58,7 +58,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16 container mx-auto px-[8rem] bg-white">
+    <section className="py-16 container mx-auto px-5 md:px-[8rem] bg-white">
       <h2 className="text-3xl font-bold mb-6 text-center">FAQs</h2>
       <div className="text-lg text-gray-700">
         {faqs.map((faq, index) => (
