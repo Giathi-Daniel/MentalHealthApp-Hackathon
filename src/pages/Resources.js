@@ -1,6 +1,6 @@
-import React from 'react';
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import React, { useState } from 'react';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const resourcesData = [
   {
@@ -42,69 +42,49 @@ const resourcesData = [
 ];
 
 const Resources = () => {
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
+  const toggleExpand = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
     <>
-        <Header />
-        <div className="bg-gray-50 min-h-screen flex flex-col">
-            <main className="container mx-auto px-4 py-8 flex-grow">
-                <h1 className="text-4xl font-bold text-center mb-12">Mental Health Resources</h1>
+      <Header />
+      <div className="bg-gray-50 min-h-screen flex flex-col">
+        <main className="container mx-auto px-4 py-8 flex-grow">
+          <section className="my-16">
+            <h2 className="text-3xl font-semibold mb-8 text-center">Featured Articles</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-2 md:px-8 select-none">
+              {resourcesData.map((resource, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                  <img
+                    src={resource.image}
+                    alt={resource.title}
+                    className="w-full h-40 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-xl font-semibold mb-2">{resource.title}</h3>
+                  <p className="text-sm text-gray-500 mb-4">
+                    {resource.date} | By {resource.author}
+                  </p>
+                  <p className="text-gray-700">
+                    {expandedIndex === index ? resource.content : `${resource.content.slice(0, 100)}...`}
+                  </p>
+                  <button
+                    onClick={() => toggleExpand(index)}
+                    className="inline-block mt-4 text-[#F0F0F0] hover:underline focus:outline-none"
+                  >
+                    
+                    {expandedIndex === index ? 'Show Less' : 'Read More'}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
+        </main>
 
-                <section className="mb-16">
-                    <h2 className="text-3xl font-semibold mb-8">Featured Articles</h2>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {resourcesData.slice(0, 2).map((resource, index) => (
-                        <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
-                            <img
-                            src={resource.image}
-                            alt={resource.title}
-                            className="w-full h-48 object-cover rounded-lg mb-4"
-                            />
-                            <h3 className="text-2xl font-semibold mb-2">{resource.title}</h3>
-                            <p className="text-sm text-gray-500 mb-4">
-                            {resource.date} | By {resource.author}
-                            </p>
-                            <p className="text-gray-700">
-                            {resource.content.slice(0, 150)}...
-                            </p>
-                            <a
-                            href="#e"
-                            className="inline-block mt-4 text-indigo-600 hover:underline"
-                            >
-                            Read More
-                            </a>
-                        </div>
-                        ))}
-                    </div>
-                </section>
-
-                <section className="grid md:grid-cols-3 gap-8">
-                {resourcesData.map((resource, index) => (
-                    <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                    <img
-                        src={resource.image}
-                        alt={resource.title}
-                        className="w-full h-40 object-cover rounded-lg mb-4"
-                    />
-                    <h3 className="text-xl font-semibold mb-2">{resource.title}</h3>
-                    <p className="text-sm text-gray-500 mb-4">
-                        {resource.date} | By {resource.author}
-                    </p>
-                    <p className="text-gray-700">
-                        {resource.content.slice(0, 100)}...
-                    </p>
-                    <a
-                        href="res"
-                        className="inline-block mt-4 text-indigo-600 hover:underline"
-                    >
-                        Read More
-                    </a>
-                    </div>
-                ))}
-                </section>
-            </main>
-
-            <Footer />
-        </div>
+        <Footer />
+      </div>
     </>
   );
 };
