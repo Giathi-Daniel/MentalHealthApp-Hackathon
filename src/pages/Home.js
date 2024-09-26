@@ -1,21 +1,14 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Header />
-
+      <Hero />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <section className="text-center mb-12">
-          <h2 className="text-2xl font-semibold mb-4">We’re Here to Help</h2>
-          <p className="text-gray-700 max-w-2xl mx-auto">
-            Access mental health resources, connect with counselors, and join our supportive community. 
-            Our platform offers tools to manage stress, trauma, and mental health concerns in a safe and welcoming space.
-          </p>
-        </section>
-
         <div className="grid md:grid-cols-3 gap-8 mb-12 px-10">
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-4">Connect with a Counselor</h3>
