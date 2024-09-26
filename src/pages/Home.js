@@ -16,7 +16,7 @@ const Home = () => {
           </p>
         </section>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-12 px-10">
           <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-4">Connect with a Counselor</h3>
             <p className="text-gray-600">Schedule a session with certified professionals.</p>
@@ -51,9 +51,9 @@ const Home = () => {
           </div>
         </div>
 
-        <section className="bg-white p-8 rounded-lg shadow-md mb-12">
+        <section className="bg-white rounded-lg shadow-md mb-12 mx-8 py-8">
           <h2 className="text-2xl font-semibold text-center mb-6">How It Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-10">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
               <div className="mb-4">
                 <span className="text-indigo-600 text-4xl font-bold">1</span>
@@ -78,8 +78,7 @@ const Home = () => {
           </div>
         </section>
 
-
-        <section className="mb-12">
+        <section className="mb-12 px-8">
           <h2 className="text-2xl font-semibold text-center mb-6">What People Are Saying</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
@@ -97,7 +96,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-indigo-600 text-white p-8 rounded-lg shadow-md mb-12 text-center">
+        <section className="bg-indigo-600 text-white py-8 rounded-lg shadow-md mb-12 text-center mx-8">
           <h2 className="text-2xl font-semibold mb-4">Subscribe to Our Newsletter</h2>
           <p className="mb-6">Stay updated with the latest mental health tips, resources, and community news.</p>
           <form className="max-w-lg mx-auto">
