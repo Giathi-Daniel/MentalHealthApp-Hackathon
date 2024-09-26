@@ -2,38 +2,10 @@ import React from 'react';
 import { Link } from "react-router-dom"
 import { motion } from 'framer-motion';
 import Header from "../components/Header";
+import CounsellorCard from "../components/CounsellorCard";
 import Footer from "../components/Footer";
+import counselorsData from '../data/counselorsData.js'; 
 
-const counselorsData = [
-  { id: 1, name: 'Dr. Jane Doe', specialty: 'Trauma Specialist', experience: '10 years', image: 'https://cdn.pixabay.com/photo/2017/09/06/20/36/doctor-2722941_1280.jpg' },
-  { id: 2, name: 'Mr. John Smith', specialty: 'Anxiety & Depression', experience: '8 years', image: 'https://media.istockphoto.com/id/1358954903/photo/shot-of-a-mature-doctor-standing-alone-in-his-clinic-with-his-arms-folded.jpg?s=612x612&w=0&k=20&c=yzdvK4p6E3QVKy0gSnGogqlkSqXwGKQHEVO5Du310JU=' },
-  { id: 3, name: 'Ms. Emma Johnson', specialty: 'Grief Counseling', experience: '6 years', image: 'https://media.istockphoto.com/id/1471886621/photo/young-adult-woman-gestures-and-talks-during-interview-with-businesswoman.jpg?s=612x612&w=0&k=20&c=57hyY3qxneb2MzzXnjpYzasqJWuPpaTVm92Kgf5bGgQ=' },
-  { id: 4, name: 'Dr. Chris Evans', specialty: 'Family & Couples Therapy', experience: '15 years', image: 'https://media.istockphoto.com/id/2035526310/photo/portrait-of-young-successful-hispanic-doctor-inside-clinic-man-smiling-and-looking-at-camera.jpg?s=612x612&w=0&k=20&c=XqngRSGkBzuHT9w56UQNiXy1FEMp_UpOLDXVoERJSQc=' },
-];
-
-const CounselorCard = ({ counselor }) => {
-  return (
-    <motion.div
-      className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105 duration-500 hover:bg-indigo-50"
-      whileHover={{ y: -10 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <img 
-        src={counselor.image} 
-        alt={counselor.name} 
-        className="h-32 w-32 object-cover rounded-full mx-auto mb-6 shadow-md"
-      />
-      <h3 className="text-2xl font-semibold text-center text-gray-800">{counselor.name}</h3>
-      <p className="text-center text-indigo-600 text-lg">{counselor.specialty}</p>
-      <p className="text-center text-gray-500">{counselor.experience} of experience</p>
-      <div className="flex justify-center mt-6">
-        <button className="bg-[#008080] text-[#F0F0F0] px-5 py-2 rounded-full hover:bg-[#98FF98] transition duration-300">
-          Book Session
-        </button>
-      </div>
-    </motion.div>
-  );
-};
 
 const Counselors = () => {
   return (
@@ -67,7 +39,7 @@ const Counselors = () => {
           </Link>
         </section>
 
-        <section className="container mx-auto px-6 py-16">
+        <section className="container mx-auto px-12 py-16">
           <div className="flex justify-between items-center mb-12">
             <div>
               <h2 className="text-4xl font-bold text-gray-800">Our Counselors</h2>
@@ -84,14 +56,14 @@ const Counselors = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {counselorsData.map(counselor => (
-              <CounselorCard key={counselor.id} counselor={counselor} />
+              <CounsellorCard key={counselor.id} counselor={counselor} />
             ))}
           </div>
         </section>
 
-        <section className="bg-gray-100 py-20 px-4">
+        <section className="bg-gray-100 py-20 px-12">
           <h2 className="text-center text-4xl font-bold mb-8 text-gray-800">What Clients Are Saying</h2>
           <div className="container mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {["My experience with counseling changed my life.", 

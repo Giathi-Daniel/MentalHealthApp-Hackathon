@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import BookingModal from './BookingModal';
 
-const CounselorCard = ({ counselor }) => {
+const CounsellorCard = ({ counselor }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -12,7 +12,11 @@ const CounselorCard = ({ counselor }) => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <img src={counselor.image} alt={counselor.name} className="h-40 w-40 object-cover rounded-full mx-auto mb-4" />
+        <img 
+          src={counselor.image} 
+          alt={counselor.name} 
+          className="h-40 w-40 object-cover rounded-full mx-auto mb-4" 
+        />
         <h3 className="text-xl font-semibold text-center">{counselor.name}</h3>
         <p className="text-center text-indigo-600">{counselor.specialty}</p>
         <p className="text-center text-gray-600">{counselor.experience} years of experience</p>
@@ -25,7 +29,6 @@ const CounselorCard = ({ counselor }) => {
           </button>
         </div>
       </motion.div>
-
       <BookingModal
         counselor={counselor}
         isOpen={isModalOpen}
@@ -35,4 +38,4 @@ const CounselorCard = ({ counselor }) => {
   );
 };
 
-export default CounselorCard;
+export default CounsellorCard;
