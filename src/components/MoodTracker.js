@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
 import { FaSmile, FaMeh, FaFrown, FaGrinStars } from 'react-icons/fa';
 
+const flashEffect = `
+@keyframes flash {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: white;
+  }
+}
+.flash {
+  animation: flash 0.5s;
+}
+`;
+
 const MoodTracker = ({ onMoodSelect }) => {
   const [selectedMood, setSelectedMood] = useState(null);
 
@@ -14,10 +31,17 @@ const MoodTracker = ({ onMoodSelect }) => {
   const handleMoodClick = (mood) => {
     setSelectedMood(mood);
     onMoodSelect(mood);
+
+    const moodContainer = document.getElementById('mood-container');
+    moodContainer.classList.add('flash');
+    setTimeout(() => {
+      moodContainer.classList.remove('flash');
+    }, 500);
   };
 
   return (
-    <div className="flex space-x-4 justify-center items-center mb-6">
+    <div id="mood-container" className="flex space-x-4 justify-center items-center mb-6">
+      <style>{flashEffect}</style> 
       {moods.map((mood, index) => (
         <div
           key={index}
