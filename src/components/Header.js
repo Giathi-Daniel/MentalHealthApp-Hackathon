@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-indigo-600 text-white p-4 shadow-md fixed w-full z-50">
+    <header className="bg-indigo-600 text-white p-4 shadow-md fixed w-full z-50 px-12 sm:px-[none]">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="App Logo" className="h-8 w-8 mr-2" />
