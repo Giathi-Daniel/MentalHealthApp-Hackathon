@@ -22,6 +22,7 @@ const Header = () => {
           <Link to="/counselors" className="hover:text-indigo-300">Counselors</Link>
           <Link to="/forum" className="hover:text-indigo-300">Community Forum</Link>
           <Link to="/resources" className="hover:text-indigo-300">Resources</Link>
+          <Link to="/contact" className="hover:text-indigo-300">Contact Us</Link>
         </nav>
 
         <div className="hidden md:flex space-x-4">
@@ -47,6 +48,7 @@ const Header = () => {
             <Link to="/counselors" className="hover:text-indigo-300">Counselors</Link>
             <Link to="/forum" className="hover:text-indigo-300">Community Forum</Link>
             <Link to="/resources" className="hover:text-indigo-300">Resources</Link>
+            <Link to="/contact" className="hover:text-indigo-300">Contact Us</Link>
             <div className="flex space-x-4">
               <Link to="/login" className="bg-white text-indigo-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition">Login</Link>
               <Link to="/signup" className="bg-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-800 transition">Sign Up</Link>

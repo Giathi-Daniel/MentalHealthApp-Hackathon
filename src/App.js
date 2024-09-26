@@ -10,6 +10,7 @@ import Counselors from './pages/Counselors';
 import CommunityForum from './pages/CommunityForum';
 import AboutUs from './pages/AboutUs';
 import Resources from './pages/Resources';
+import ContactUs from './pages/Contact';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/resources" element={<Resources />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/forum" element={<CommunityForum />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
       </Router>
     </ChatProvider>
