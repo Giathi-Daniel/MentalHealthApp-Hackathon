@@ -5,19 +5,24 @@ import Header from '../components/Header';
 import MoodTracker from '../components/MoodTracker';
 import SupportiveReactions from '../components/SupportiveReactions';
 import DailyWellnessTips from '../components/DailyWellnessTips';
-import AvatarUpload from '../components/AvatarUpload'; 
+import AvatarUpload from '../components/AvatarUpload';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const CommunityForum = () => {
   const [selectedTopic, setSelectedTopic] = useState('general');
   const [message, setMessage] = useState('');
   const [mood, setMood] = useState(null);
-  const [messages, setMessages] = useState([
-    { text: 'Welcome to the General Discussion!', sender: 'Admin', time: '10:00 AM', mood: 'Happy' }
-  ]);
+
+  // Separate messages for each topic
+  const [messages, setMessages] = useState({
+    general: [{ text: 'Welcome to the General Discussion!', sender: 'Admin', time: '10:00 AM', mood: 'Happy' }],
+    'mental-health': [],
+    coping: [],
+    therapy: [],
+  });
 
   const [avatars, setAvatars] = useState({
-    'User 1': 'https://cdn.pixabay.com/photo/2021/03/03/08/56/woman-6064819_1280.jpg', 
+    'User 1': 'https://cdn.pixabay.com/photo/2021/03/03/08/56/woman-6064819_1280.jpg',
     'User 2': 'https://cdn.pixabay.com/photo/2015/01/12/10/44/woman-597173_640.jpg',
     'User 3': 'https://cdn.pixabay.com/photo/2023/06/23/11/23/ai-generated-8083323_640.jpg',
   });
@@ -27,21 +32,28 @@ const CommunityForum = () => {
   const topicStyles = {
     general: 'bg-white',
     'mental-health': 'bg-blue-50',
-    coping: 'bg-yellow-50', 
-    therapy: 'bg-green-50', 
+    coping: 'bg-yellow-50',
+    therapy: 'bg-green-50',
   };
 
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (message.trim()) {
-      setMessages([...messages, { text: message, sender: 'You', time: '10:10 AM', mood: mood?.label }]);
+      // Update messages for the selected topic
+      setMessages({
+        ...messages,
+        [selectedTopic]: [...messages[selectedTopic], { text: message, sender: 'You', time: '10:10 AM', mood: mood?.label }]
+      });
       setMessage('');
       setMood(null);
     }
   };
 
   const handleReaction = (reaction) => {
-    setMessages([...messages, { text: reaction, sender: 'Supporter', time: '10:11 AM', mood: null }]);
+    setMessages({
+      ...messages,
+      [selectedTopic]: [...messages[selectedTopic], { text: reaction, sender: 'Supporter', time: '10:11 AM', mood: null }]
+    });
   };
 
   const handleAvatarChange = (username, newAvatar) => {
@@ -77,23 +89,15 @@ const CommunityForum = () => {
 
         <div className={`flex-1 flex flex-col justify-between mt-[3.7rem] ${topicStyles[selectedTopic]}`}>
           <div className="flex-grow p-6 shadow-md overflow-y-auto">
-            <CSSTransition
-              key={selectedTopic}
-              timeout={300}
-              classNames="fade"
-            >
+            <CSSTransition key={selectedTopic} timeout={300} classNames="fade">
               <h2 className="text-xl font-bold mb-4 transition-opacity">#{selectedTopic}</h2>
             </CSSTransition>
 
             {selectedTopic === 'mental-health' && <DailyWellnessTips />}
 
             <TransitionGroup className="message-list">
-              {messages.map((msg, index) => (
-                <CSSTransition
-                  key={index}
-                  timeout={300}
-                  classNames="fade"
-                >
+              {messages[selectedTopic].map((msg, index) => (
+                <CSSTransition key={index} timeout={300} classNames="fade">
                   <div className="mb-4">
                     <span className="font-bold text-indigo-600">{msg.sender}</span>
                     <span className="text-sm text-gray-500 ml-2">{msg.time}</span>
@@ -106,9 +110,7 @@ const CommunityForum = () => {
               ))}
             </TransitionGroup>
 
-            {selectedTopic === 'mental-health' && (
-              <SupportiveReactions onReact={handleReaction} />
-            )}
+            {selectedTopic === 'mental-health' && <SupportiveReactions onReact={handleReaction} />}
           </div>
 
           <div className="p-4 bg-gray-200">
