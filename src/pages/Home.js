@@ -89,20 +89,26 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-indigo-600 text-white py-8 rounded-lg shadow-md mb-12 text-center mx-8">
-          <h2 className="text-2xl font-semibold mb-4">Subscribe to Our Newsletter</h2>
-          <p className="mb-6">Stay updated with the latest mental health tips, resources, and community news.</p>
-          <form className="max-w-lg mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full p-3 rounded-lg border-2 border-gray-300 mb-4"
-            />
-            <button className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-              Subscribe
-            </button>
-          </form>
+        <section 
+          className="relative bg-indigo-600 text-white py-8 rounded-lg shadow-md mb-12 text-center mx-8" 
+          style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/h1.webp)`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        >
+          <div className=" p-8 rounded-lg">
+            <h2 className="text-2xl font-semibold mb-4">Subscribe to Our Newsletter</h2>
+            <p className="mb-6">Stay updated with the latest mental health tips, resources, and community news.</p>
+            <form className="max-w-lg mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full p-3 rounded-lg border-2 border-gray-300 mb-4"
+              />
+              <button className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                Subscribe
+              </button>
+            </form>
+          </div>
         </section>
+
       </main>
       
       <Footer />

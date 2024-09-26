@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom"
 import { motion } from 'framer-motion';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const counselorsData = [
   { id: 1, name: 'Dr. Jane Doe', specialty: 'Trauma Specialist', experience: '10 years', image: 'https://cdn.pixabay.com/photo/2017/09/06/20/36/doctor-2722941_1280.jpg' },
@@ -118,15 +119,19 @@ const Counselors = () => {
           >
             Need Help Choosing a Counselor?
           </motion.h2>
-          <p className="mb-8">Contact our team for personalized assistance in finding the right counselor for your needs.</p>
-          <motion.button 
-            className="bg-white text-indigo-600 px-8 py-4 rounded-full hover:bg-gray-200 transition"
-            whileHover={{ scale: 1.1 }}
-          >
-            Get Support Now
-          </motion.button>
+          <p className="mb-8">Contact our team for personalized assistance in finding the right counselor for your needs.</p>   
+          <Link to="/contact">
+            <motion.button 
+              aria-label="Get support now"
+              className="bg-white text-indigo-600 px-8 py-4 rounded-full hover:bg-gray-200 transition"
+              whileHover={{ scale: 1.1 }}
+            >
+              Get Support Now
+            </motion.button>
+          </Link>
         </section>
       </div>
+      <Footer />
     </>
   );
 };
