@@ -12,7 +12,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gradient-to-r from-green-400 to-blue-500">
+    <div className="flex h-screen bg-gradient-to-r from-green-400 to-blue-500 px-3">
       <div className="m-auto bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
         <h1 className="text-2xl font-semibold text-center mb-4">Reset Password</h1>
         {submitted ? (
