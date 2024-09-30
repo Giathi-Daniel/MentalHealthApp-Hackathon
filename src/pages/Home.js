@@ -37,7 +37,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md mb-12 px-5 md:px-8 py-8">
+        <section className="bg-white rounded-lg shadow-md mb-12 py-8 md:mx-8">
           <h2 className="text-2xl font-semibold text-center mb-6">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-10">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
