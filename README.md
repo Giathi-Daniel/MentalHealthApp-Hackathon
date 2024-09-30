@@ -23,6 +23,7 @@ The Mental Health Support App is a web-based application designed to provide men
 8. [Deploying to Vercel](#deploying-to-vercel)
 9. [Contributing](#contributing)
 10. [License](#license)
+11. [Demo](#demo)
 
 ---
 
@@ -264,4 +265,7 @@ We welcome contributions from the community. Please follow these steps:
 ### License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+### demo
+Live Demo: https://mental-health-supp.web.app/
 
